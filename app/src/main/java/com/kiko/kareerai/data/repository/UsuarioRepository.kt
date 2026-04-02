@@ -1,7 +1,7 @@
 package com.kiko.kareerai.data.repository
 
-import com.kiko.kareerai.data.dao.UsuarioDao
-import com.kiko.kareerai.data.entity.Usuario
+import com.kiko.kareerai.data.local.dao.UsuarioDao
+import com.kiko.kareerai.data.local.entity.Usuario
 import kotlinx.coroutines.flow.Flow
 
 class UsuarioRepository(private val usuarioDao: UsuarioDao) {

@@ -3,16 +3,15 @@ package com.kiko.kareerai.viewmodel
 import android.app.Application
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.viewModelScope
-import com.kiko.kareerai.data.database.KareerAIBD
-import com.kiko.kareerai.data.entity.Usuario
+import com.kiko.kareerai.data.local.database.KareerAIDatabase
+import com.kiko.kareerai.data.local.entity.Usuario
 import com.kiko.kareerai.data.repository.UsuarioRepository
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
-class
-UsuarioViewModel(application: Application) : AndroidViewModel(application) {
+class UsuarioViewModel(application: Application) : AndroidViewModel(application) {
 
     private val usuarioRepository: UsuarioRepository
 
@@ -23,7 +22,7 @@ UsuarioViewModel(application: Application) : AndroidViewModel(application) {
     val currentUser: StateFlow<Usuario?> = _currentUser
 
     init {
-        val database = KareerAIBD.getDatabase(application)
+        val database = KareerAIDatabase.getDatabase(application)
         usuarioRepository = UsuarioRepository(database.usuarioDao())
 
         // Verifica se usuário já existe

@@ -1,7 +1,7 @@
-package com.kiko.kareerai.data.dao
+package com.kiko.kareerai.data.local.dao
 
 import androidx.room.*
-import com.kiko.kareerai.data.entity.Usuario
+import com.kiko.kareerai.data.local.entity.Usuario
 import kotlinx.coroutines.flow.Flow
 
 @Dao

@@ -18,7 +18,7 @@ import com.kiko.kareerai.components.layout.LayoutKiko
 import com.kiko.kareerai.components.outlined.KikoOutlinedTextField
 import com.kiko.kareerai.components.toast.KikoErrorToast
 import com.kiko.kareerai.components.toast.KikoSuccessToast
-import com.kiko.kareerai.data.entity.Usuario
+import com.kiko.kareerai.data.local.entity.Usuario
 import com.kiko.kareerai.navigation.Screen
 import com.kiko.kareerai.viewmodel.UsuarioViewModel
 import kotlinx.coroutines.delay

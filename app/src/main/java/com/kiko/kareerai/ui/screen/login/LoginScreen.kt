@@ -1,6 +1,5 @@
 package com.kiko.kareerai.ui.screen.login
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
@@ -12,15 +11,12 @@ import androidx.compose.material.icons.filled.AccountCircle
 import androidx.compose.material.icons.filled.Lock
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Pets
-import androidx.compose.material.icons.filled.Security
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
@@ -49,7 +45,6 @@ fun LoginScreen(
     )
     val iconSize = 100.dp
 
-
     var username by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
 
@@ -58,9 +53,6 @@ fun LoginScreen(
     var showSuccessToast by remember { mutableStateOf(false) }
 
     val scope = rememberCoroutineScope()
-
-    // Coletando usuário logado (StateFlow)
-    val usuarioCadastrado by viewModel?.currentUser?.collectAsState() ?: remember { mutableStateOf(null) }
 
     Box(
         modifier = Modifier
@@ -82,7 +74,6 @@ fun LoginScreen(
                 modifier = Modifier.padding(top = 40.dp)
             )
 
-            // Icon Pets
             Icon(
                 imageVector = Icons.Filled.AccountCircle,
                 contentDescription = "Dog Icon",
@@ -132,6 +123,8 @@ fun LoginScreen(
                     keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
                 )
 
+                Spacer(modifier = Modifier.height(32.dp))
+
                 KikoExtraButton(
                     text = "ACESSAR",
                     onClick = {
@@ -165,12 +158,9 @@ fun LoginScreen(
                             }
                         }
                     },
-                    modifier = Modifier
-                        .fillMaxWidth(0.8f)
-                        .padding(top = 32.dp)
+                    modifier = Modifier.fillMaxWidth(0.8f)
                 )
 
-                // 🔹 ESQUECEU A SENHA sempre aparece
                 Text(
                     text = "Esqueceu a senha?",
                     color = MaterialTheme.colorScheme.onTertiary,
@@ -197,23 +187,8 @@ fun LoginScreen(
     }
 }
 
-
-@Preview(showBackground = true, widthDp = 360, heightDp = 640)
-@Preview(showBackground = true, widthDp = 411, heightDp = 891)
-@Preview(showBackground = true, widthDp = 800, heightDp = 1280)
+@Preview(showBackground = true, name = "Login Light")
 @Composable
-fun LoginScreenLightPreview() {
-    KareerAITheme (darkTheme = false) {
-        LoginScreen()
-    }
-}
-
-@Preview(showBackground = true, widthDp = 360, heightDp = 640)
-@Preview(showBackground = true, widthDp = 411, heightDp = 891)
-@Preview(showBackground = true, widthDp = 800, heightDp = 1280)
-@Composable
-fun LoginScreenDarkPreview() {
-    KareerAITheme (darkTheme = true) {
-        LoginScreen()
-    }
+fun LoginScreenPreview() {
+    KareerAITheme(darkTheme = false) { LoginScreen() }
 }

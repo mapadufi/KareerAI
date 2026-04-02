@@ -1,4 +1,4 @@
-package com.kiko.kareerai.data.datastore
+package com.kiko.kareerai.data.local.datastore
 
 import android.content.Context
 import androidx.datastore.core.DataStore
@@ -16,12 +16,15 @@ class ThemePreferences(private val context: Context) {
 
     companion object {
         private val THEME_KEY = stringPreferencesKey("app_theme")
-        private val DARK_MODE_KEY = booleanPreferencesKey("dark_mode") // ✅ usar booleanPreferencesKey
+        private val DARK_MODE_KEY = booleanPreferencesKey("dark_mode")
+        private val GEMINI_API_KEY = stringPreferencesKey("gemini_api_key")
     }
 
     val themeFlow: Flow<String?> = context.themeDataStore.data.map { it[THEME_KEY] }
 
     val darkModeFlow: Flow<Boolean> = context.themeDataStore.data.map { it[DARK_MODE_KEY] ?: false }
+
+    val geminiApiKeyFlow: Flow<String?> = context.themeDataStore.data.map { it[GEMINI_API_KEY] }
 
     suspend fun saveTheme(theme: String) {
         context.themeDataStore.edit { it[THEME_KEY] = theme }
@@ -29,5 +32,9 @@ class ThemePreferences(private val context: Context) {
 
     suspend fun saveDarkMode(isDark: Boolean) {
         context.themeDataStore.edit { it[DARK_MODE_KEY] = isDark }
+    }
+
+    suspend fun saveGeminiApiKey(key: String) {
+        context.themeDataStore.edit { it[GEMINI_API_KEY] = key }
     }
 }

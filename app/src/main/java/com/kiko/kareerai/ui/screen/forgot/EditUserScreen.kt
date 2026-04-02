@@ -19,8 +19,7 @@ import com.kiko.kareerai.components.buttons.KikoExtraButton
 import com.kiko.kareerai.components.outlined.KikoOutlinedTextField
 import com.kiko.kareerai.components.toast.KikoErrorToast
 import com.kiko.kareerai.components.toast.KikoSuccessToast
-import com.kiko.kareerai.data.database.KareerAIDatabase
-import com.kiko.kareerai.data.entity.Usuario
+import com.kiko.kareerai.data.local.entity.Usuario
 import com.kiko.kareerai.navigation.Screen
 import com.kiko.kareerai.ui.theme.KareerAITheme
 import com.kiko.kareerai.viewmodel.UsuarioViewModel
@@ -153,7 +152,7 @@ fun EditUserScreen(
                         showSuccess = true
                         delay(1500)
                         navController?.navigate(Screen.Login.route) {
-                            popUpTo(Screen.EditUser.route) { inclusive = true }
+                            popUpTo(Screen.EditarUser.route) { inclusive = true }
                         }
                     }
                 },

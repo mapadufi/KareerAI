@@ -1,4 +1,4 @@
-package com.kiko.kareerai.data.entity
+package com.kiko.kareerai.data.local.entity
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity
